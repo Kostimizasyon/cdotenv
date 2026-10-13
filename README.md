@@ -4,14 +4,17 @@ A simple .env parser for C for setting env variables.
 
 just put
 
-```c
+```txt
+{ENV_NAME}={ENV_VAL}
+```
 
-#include "dotenv.c"
+Then in ur program:
+
+```c
+#include "cdotenv.h"
 
 read_env("PATH_TO_ENV")
 
-// PATH_TO_ENV
-{ENV_NAME}anything here={ENV_VAL}
+// then just
+char* env_name = getenv("{ENV_NAME}")
 ```
-
-Then use `getenv({ENV_NAME})`
