@@ -5,6 +5,8 @@ A simple .env parser for C for setting env variables.
 just put
 
 ```txt
+// .env or anything else u want idk
+
 {ENV_NAME}={ENV_VAL}
 ```
 
