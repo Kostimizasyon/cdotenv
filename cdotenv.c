@@ -3,7 +3,7 @@
 #include <string.h>
 #include <stdbool.h>
 
-#include "dotenv.h"
+#include "cdotenv.h"
 
 #define KEY_BUF_SIZE 256
 #define VALUE_BUF_SIZE 512
