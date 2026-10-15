@@ -8,14 +8,14 @@
 #define KEY_BUF_SIZE 256
 #define VALUE_BUF_SIZE 512
 
-void
+int
 read_env(const char *path) {
 
 	FILE* env_file = fopen(path, "r");
 	
 	if (env_file == NULL) {
-		puts("File not found");
-		return;
+		perror(path);
+		return -1;
 	}
 	char c;
 
@@ -36,7 +36,7 @@ read_env(const char *path) {
 
 				if (c == -1) {
 					puts("unable to set env variables");
-					return;
+					return -1;
 				}
 			}
 			ki = 0;
@@ -53,21 +53,23 @@ read_env(const char *path) {
 			active = 1;
 		}
 		else if (!active) {
-			if (ki < sizeof key - 1) key[ki++] = c;
+			if (ki < KEY_BUF_SIZE - 1) key[ki++] = c;
 			else {
-				puts("Possible overflow!");
-				return;
+				puts("Possible key overflow! Exiting");
+				return -1;
 			}
 		    }
 		else {
-			if (vi < sizeof val - 1) val[vi++] = c;
+			if (vi < VALUE_BUF_SIZE - 1) val[vi++] = c;
 			else {
-				puts("Possible overflow!");
-				return;
+				puts("Possible value overflow! Exiting");
+				return -1;
 			}
 		}
 	}
 
 	fclose(env_file);
+
+	return 0;
 
 }

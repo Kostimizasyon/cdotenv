@@ -1,1 +1,1 @@
-void read_env(const char* path);
+int read_env(const char* path);
