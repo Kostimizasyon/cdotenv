@@ -8,6 +8,7 @@ extern "C" {
 #define VALUE_OVERFLOW -5
 #define SET_ENV_FAIL   -7
 #define WRITE_FAIL     -9
+#define CLOSE_FAIL     -11
 
 #define KEY_BUF_SIZE 256
 #define VALUE_BUF_SIZE 512
