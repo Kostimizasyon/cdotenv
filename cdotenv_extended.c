@@ -3,7 +3,7 @@
 #include <string.h>
 #include <stdbool.h>
 
-#include "cdotenv_utils.h"
+#include "cdotenv_extended.h"
 
 int
 replace_env(const char* key, const char* val, const char* file_name) {
