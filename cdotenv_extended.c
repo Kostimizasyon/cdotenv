@@ -3,7 +3,6 @@
 #include <string.h>
 #include <stdbool.h>
 
-#include "cdotenv.h"
 #include "cdotenv_utils.h"
 
 int
