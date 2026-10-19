@@ -5,9 +5,6 @@
 
 #include "cdotenv.h"
 
-#define KEY_BUF_SIZE 256
-#define VALUE_BUF_SIZE 512
-
 int
 read_env(const char *path) {
 
@@ -56,7 +53,7 @@ read_env(const char *path) {
 			active = 1;
 		}
 		else if (!active) {
-			if (ki < KEY_BUF_SIZE )	key[ki++] = c;
+			if (ki < KEY_BUF_SIZE - 1 ) key[ki++] = c;
 			else {
 				puts("Possible key overflow! Exiting");
 				return KEY_OVERFLOW;
