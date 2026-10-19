@@ -36,7 +36,7 @@ read_env(const char *path) {
 				c = setenv(key, val, 1);
 
 				if (c == -1) {
-					puts("Unable to set env variables");
+					perror("Unable to set env variables");
 					return SET_ENV_FAIL;
 				}
 
@@ -55,20 +55,23 @@ read_env(const char *path) {
 		else if (!active) {
 			if (ki < KEY_BUF_SIZE - 1 ) key[ki++] = c;
 			else {
-				puts("Possible key overflow! Exiting");
+				perror("Possible key overflow! Exiting");
 				return KEY_OVERFLOW;
 			}
 		    }
 		else {
 			if (vi < VALUE_BUF_SIZE - 1) val[vi++] = c;
 			else {
-				puts("Possible value overflow! Exiting");
+				perror("Possible value overflow! Exiting");
 				return VALUE_OVERFLOW;
 			}
 		}
 	}
 
-	fclose(env_file);
+	if (fclose(env_file) != 0) {
+		perror("fclose");
+		return CLOSE_FAIL;
+	}
 
 	return SUCESS;
 
