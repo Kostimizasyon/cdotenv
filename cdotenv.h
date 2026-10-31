@@ -1,6 +1,14 @@
+#ifndef __cdotenv_h__ // Cdotenv
+#define __cdotenv_h__
+
 #ifdef __cplusplus
 extern "C" {
 #endif
+
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+#include <stdbool.h>
 
 #define SUCESS          0
 #define FILE_NOT_FOUND -1
@@ -19,3 +27,5 @@ int read_env(const char* path);
 #ifdef __cplusplus
 }
 #endif
+
+#endif		//cdotenv

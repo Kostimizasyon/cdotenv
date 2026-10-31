@@ -1,15 +1,16 @@
 CC      = gcc
 CFLAGS  = -Wall -Wextra -g
 TARGET  = cdotenv
-SRCS    = main.c cdotenv.c cdotenv_utils.c
-OBJS    = $(patsubst %.c,.%.o,$(SRCS))
+SRCS    = cdotenv.c main.c cdotenv_extended.c 
+OBJS    = $(SRCS:.c=.o)
+HDRS    = cdotenv.h cdotenv_extended.h
 
 all: $(TARGET)
 
 $(TARGET): $(OBJS)
 	$(CC) $(CFLAGS) -o $@ $^
 
-.%.o: %.c cdotenv.h cdotenv_utils.h
+%.o: %.c $(HDRS)
 	$(CC) $(CFLAGS) -c $< -o $@
 
 clean:
