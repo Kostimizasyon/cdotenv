@@ -1,6 +1,6 @@
 # dotenv
 
-A simple .env parser for C for setting env variables.
+A simple .env parser for C & CPP for setting env variables.
 
 just put
 
@@ -44,6 +44,9 @@ write_env("NEW_KEY", "new_val", "PATH_TO_ENV", "w");
 
 // change the value of an existing key
 replace_env("EXISTING_KEY", "other_val", "PATH_TO_ENV");
+
+// read env inside of a memory buffer (old implementation)
+buf_readenv("PATH_TO_ENV");
 ```
 
 `mode` is a normal `fopen` mode and defaults to `"a"` (append) when `NULL`. Passing `NULL` as the file path uses `.env`.

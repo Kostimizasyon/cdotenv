@@ -11,8 +11,8 @@ int replace_env(const char* key, const char* value, const char* file_name);
 // write into a env file
 int write_env(const char* key, const char* value, const char* file_name, const char* mode);
 
-// read env variables WITHOUT the risk of overflow
-int mem_readenv(const char* path);
+// read env variables inside of a buffer, could have problems with larger values
+int buf_readenv(const char* path);
 
 #ifdef __cplusplus
 }
